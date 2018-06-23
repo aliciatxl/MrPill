@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "90237883399",
+    "firebase_url": "https://mrpill-e05b1.firebaseio.com",
+    "project_id": "mrpill-e05b1",
+    "storage_bucket": "mrpill-e05b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90237883399:android:7fbc699fc41e4072",
+        "android_client_info": {
+          "package_name": "com.example.tansuyee.mrpill"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90237883399-0uuhkejr69h2u6hikbh2ir6rp717uu4m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tansuyee.mrpill",
+            "certificate_hash": "3dc54768b4c6e29614a8a8e37504f7576ee69412"
+          }
+        },
+        {
+          "client_id": "90237883399-vmsbpvktvhksip11gt0rh684gprf61v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa8uox24WGtR8VIRAriVXSneNvWLFFRaM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90237883399-vmsbpvktvhksip11gt0rh684gprf61v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
