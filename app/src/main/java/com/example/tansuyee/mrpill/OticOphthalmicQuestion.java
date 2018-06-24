@@ -1,11 +1,11 @@
 package com.example.tansuyee.mrpill;
 
-public class CoughColdQuestion extends Question {
+public class OticOphthalmicQuestion extends Question {
     public String questions[] = {
-            "1Which is a common feature of common cold?",
-            "1Which is the usual distinguishing feature of allergic rhinitis from common cold?",
-            "1What should you NOT do during a fever?",
-            "1What should you do to avoid allergens?"
+            "3Which is a common feature of common cold?",
+            "3Which is the usual distinguishing feature of allergic rhinitis from common cold?",
+            "3What should you NOT do during a fever?",
+            "3What should you do to avoid allergens?"
     };
 
     public String choices[][] = {

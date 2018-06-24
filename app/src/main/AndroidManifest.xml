@@ -20,7 +20,7 @@
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".CoughColdQuiz"></activity>
+        <activity android:name=".QuizActivity"></activity>
     </application>
 
 </manifest>

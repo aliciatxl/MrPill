@@ -13,54 +13,45 @@ import android.widget.Button;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuizzesFragment extends Fragment {
+public class QuizzesFragment extends Fragment implements View.OnClickListener {
 
-    Button btn_coughCold;
-
-    /* public void coughColdButton(View view) {
-        Intent intent = new Intent (getActivity(), CoughColdQuiz.class);
-        startActivity(intent);
-    }
-*/
-    /*public void oticOphthalmicButton(View view) {
-        Intent intent = new Intent (this, OticOphthalmicQuiz.class);
-        startActivity(intent);
-    }
-
-    public void painButton(View view) {
-        Intent intent = new Intent (this, PainQuiz.class);
-        startActivity(intent);
-    }
-
-    public void gastrointestinalButton(View view) {
-        Intent intent = new Intent (this, GastrointestinalQuiz.class);
-        startActivity(intent);
-    }
-
-    public void skinConditionsButton(View view) {
-        Intent intent = new Intent (this, SkinConditionsQuiz.class);
-        startActivity(intent);
-    }
-*/
     public QuizzesFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_quizzes, container, false);
-        btn_coughCold = v.findViewById(R.id.btn_coughCold);
-        btn_coughCold.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getActivity(), CoughColdQuiz.class);
-                startActivity(intent);
-            }
-        });
+        v.findViewById(R.id.btn_coughCold).setOnClickListener(this);
+        v.findViewById(R.id.btn_oticOphthalmic).setOnClickListener(this);
+        v.findViewById(R.id.btn_pain).setOnClickListener(this);
+        v.findViewById(R.id.btn_gastrointestinal).setOnClickListener(this);
+        v.findViewById(R.id.btn_skinConditions).setOnClickListener(this);
         return v;
     }
 
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent (getActivity(), QuizActivity.class);
+        switch (view.getId()) {
+            case R.id.btn_coughCold:
+               intent.putExtra("topic", 1);
+               break;
+            case R.id.btn_oticOphthalmic:
+                intent.putExtra("topic", 2);
+                break;
+            case R.id.btn_pain:
+                intent.putExtra("topic", 3);
+                break;
+            case R.id.btn_gastrointestinal:
+                intent.putExtra("topic", 4);
+                break;
+            case R.id.btn_skinConditions:
+                intent.putExtra("topic", 5);
+                break;
+        }
+        startActivity(intent);
+    }
 }
