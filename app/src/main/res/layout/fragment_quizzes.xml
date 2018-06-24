@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizzesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_coughCold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="coughColdButton"
+            android:text="Cough and Cold" />
+
+        <Button
+            android:id="@+id/btn_oticOphthalmic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Otic and Ophthalmic" />
+
+        <Button
+            android:id="@+id/btn_pain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Pain" />
+
+        <Button
+            android:id="@+id/btn_gastrointestinal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Gastrointestinal" />
+
+        <Button
+            android:id="@+id/btn_skinConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Skin Conditions"/>
+    </LinearLayout>
+
+</FrameLayout>
