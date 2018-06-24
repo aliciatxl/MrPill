@@ -9,42 +9,56 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="6">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Time to quiz yourself!"
+            android:padding="15sp"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_coughCold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="coughColdButton"
-            android:text="Cough and Cold" />
+            android:tag="1"
+            android:text="Cough and Cold"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_oticOphthalmic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:text="Otic and Ophthalmic" />
+            android:tag="2"
+            android:text="Otic and Ophthalmic"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_pain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:text="Pain" />
+            android:tag="3"
+            android:text="Pain"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_gastrointestinal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:text="Gastrointestinal" />
+            android:tag="4"
+            android:text="Gastrointestinal"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_skinConditions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:text="Skin Conditions"/>
+            android:tag="5"
+            android:text="Skin Conditions"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 </FrameLayout>

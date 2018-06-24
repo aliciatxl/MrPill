@@ -35,23 +35,7 @@ public class QuizzesFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Intent intent = new Intent (getActivity(), QuizActivity.class);
-        switch (view.getId()) {
-            case R.id.btn_coughCold:
-               intent.putExtra("topic", 1);
-               break;
-            case R.id.btn_oticOphthalmic:
-                intent.putExtra("topic", 2);
-                break;
-            case R.id.btn_pain:
-                intent.putExtra("topic", 3);
-                break;
-            case R.id.btn_gastrointestinal:
-                intent.putExtra("topic", 4);
-                break;
-            case R.id.btn_skinConditions:
-                intent.putExtra("topic", 5);
-                break;
-        }
+        intent.putExtra("topicQuiz", Integer.parseInt(view.getTag().toString()));
         startActivity(intent);
     }
 }

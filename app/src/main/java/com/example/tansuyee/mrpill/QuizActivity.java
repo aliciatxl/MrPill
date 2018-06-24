@@ -38,8 +38,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         questionLength = 4;
 
         Intent intent = getIntent();
-        int topic = intent.getIntExtra("topic", 0);
-        Log.i("activityInfo", Integer.toString(topic));
+        int topic = intent.getIntExtra("topicQuiz", 0);
         switch (topic) {
             case 1:
                 question = new CoughColdQuestion();
