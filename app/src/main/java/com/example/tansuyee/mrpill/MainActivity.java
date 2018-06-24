@@ -2,6 +2,7 @@ package com.example.tansuyee.mrpill;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +19,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FirebaseAuth mAuth;
     EditText email, password;
     ProgressBar progressBar;
+    SharedPreferences sharedPreferences;
 
     private void userLogIn() {
         String emailString = email.getText().toString();
@@ -82,6 +85,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
+
+        if (mAuth.getCurrentUser() != null) {
+            finish();
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+        }
 
         findViewById(R.id.relativeLayout).setOnTouchListener(new View.OnTouchListener() {
             @Override
