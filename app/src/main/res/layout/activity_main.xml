@@ -47,9 +47,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:hint=" Email"
+            android:hint="@string/hint_email"
             android:textColorHint="#ffffff"
-            android:drawableLeft="@drawable/ic_shortcut_email"
+            android:drawableStart="@drawable/ic_shortcut_email"
             android:background="@drawable/text_rect"
             android:textColor="#ffffff"
             />
@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15sp"
             android:background="@drawable/text_rect"
-            android:drawableLeft="@drawable/ic_shortcut_lock"
-            android:hint=" Password"
+            android:drawableStart="@drawable/ic_shortcut_lock"
+            android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:padding="0sp"
             android:textColor="#ffffff"
@@ -75,18 +75,18 @@
             android:layout_marginTop="15sp"
             android:background="@drawable/button_rect"
             android:shadowColor="#232526"
-            android:text="Log in"
+            android:text="@string/log_in"
             android:textColor="#ffffff" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account?"
-
+                android:text="@string/no_account"
                 android:textColor="#e5e7e8"
                 android:textSize="17sp" />
 
@@ -94,10 +94,11 @@
                 android:id="@+id/textViewSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
+                android:text="@string/sign_up"
                 android:padding="10dp"
                 android:textColor="#ffffff"
                 android:clickable="true"
+                android:focusable="true"
                 android:onClick="onClick"/>
 
         </LinearLayout>

@@ -13,6 +13,7 @@ public class ProfileActivity extends AppCompatActivity {
     private QuizzesFragment quizzesFragment;
     private HomeFragment homeFragment;
     private RewardsFragment rewardsFragment;
+    private SettingsFragment settingsFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -28,6 +29,9 @@ public class ProfileActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_rewards:
                     loadFragment(rewardsFragment);
+                    return true;
+                case R.id.navigation_settings:
+                    loadFragment(settingsFragment);
                     return true;
             }
             return false;
@@ -51,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         quizzesFragment = new QuizzesFragment();
         homeFragment = new HomeFragment();
         rewardsFragment = new RewardsFragment();
+        settingsFragment = new SettingsFragment();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

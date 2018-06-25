@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_action_card_giftcard"
         android:title="@string/title_rewards" />
 
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_action_settings"
+        android:title="@string/title_settings" />
+
 </menu>

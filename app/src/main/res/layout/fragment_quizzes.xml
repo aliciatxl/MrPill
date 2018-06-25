@@ -25,39 +25,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:tag="1"
-            android:text="Cough and Cold"
+            android:text="@string/cough_and_cold"
             android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_oticOphthalmic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:tag="2"
-            android:text="Otic and Ophthalmic"
-            android:layout_weight="1"/>
+            android:text="@string/dry_eyes" />
 
         <Button
             android:id="@+id/btn_pain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:tag="3"
-            android:text="Pain"
-            android:layout_weight="1"/>
+            android:text="@string/chronic_pain" />
 
         <Button
             android:id="@+id/btn_gastrointestinal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:tag="4"
-            android:text="Gastrointestinal"
-            android:layout_weight="1"/>
+            android:text="@string/stomach_conditions" />
 
         <Button
             android:id="@+id/btn_skinConditions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:tag="5"
-            android:text="Skin Conditions"
+            android:text="@string/skin_conditions"
             android:layout_weight="1"/>
     </LinearLayout>
 

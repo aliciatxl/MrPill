@@ -48,7 +48,7 @@
             android:background="@drawable/text_rect"
             android:drawableLeft="@drawable/ic_shortcut_email"
             android:ems="10"
-            android:hint=" Email"
+            android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff" />
@@ -60,7 +60,7 @@
             android:layout_marginTop="15sp"
             android:background="@drawable/text_rect"
             android:drawableLeft="@drawable/ic_shortcut_lock"
-            android:hint=" Password"
+            android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:padding="0sp"
             android:textColor="#ffffff"
@@ -74,7 +74,7 @@
             android:layout_marginTop="15sp"
             android:background="@drawable/button_rect"
             android:shadowColor="#232526"
-            android:text="Sign up"
+            android:text="@string/sign_up"
             android:textColor="#ffffff" />
 
         <LinearLayout
@@ -85,7 +85,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already have an account?"
+                android:text="@string/have_account"
 
                 android:textColor="#e5e7e8"
                 android:textSize="17sp" />
@@ -95,9 +95,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:focusable="true"
                 android:onClick="onClick"
                 android:padding="10dp"
-                android:text="Log In"
+                android:text="@string/log_in"
                 android:textColor="#ffffff" />
 
         </LinearLayout>
