@@ -22,10 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    FirebaseAuth mAuth;
-    EditText email, password;
-    ProgressBar progressBar;
-    SharedPreferences sharedPreferences;
+    private FirebaseAuth mAuth;
+    private EditText email, password;
+    private ProgressBar progressBar;
 
     private void userLogIn() {
         String emailString = email.getText().toString();
@@ -62,9 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -95,15 +94,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.relativeLayout).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                if (getCurrentFocus() != null) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
                 return true;
             }
         });
 
         Intent intent = getIntent();
         if (intent.getStringExtra("email") != null) {
-            String emailString = intent.getStringExtra("email").toString();
+            String emailString = intent.getStringExtra("email");
             if (emailString != null) {
                 Log.i("emailString", emailString);
             }

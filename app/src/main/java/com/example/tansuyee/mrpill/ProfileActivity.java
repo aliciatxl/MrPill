@@ -1,5 +1,6 @@
 package com.example.tansuyee.mrpill;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -42,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
                     .commit();
             return true;
         }
@@ -57,9 +59,22 @@ public class ProfileActivity extends AppCompatActivity {
         rewardsFragment = new RewardsFragment();
         settingsFragment = new SettingsFragment();
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        loadFragment(homeFragment);
+
+        switch (getIntent().getIntExtra("fragment", 0)) {
+            case 2:
+                loadFragment(quizzesFragment);
+                break;
+            case 3:
+                loadFragment(rewardsFragment);
+                break;
+            case 4:
+                loadFragment(settingsFragment);
+                break;
+            default:
+                loadFragment(homeFragment);
+        }
     }
 
 }

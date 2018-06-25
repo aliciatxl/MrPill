@@ -2,6 +2,10 @@ package com.example.tansuyee.mrpill;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,30 +15,63 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
     Button btn_one, btn_two, btn_three, btn_four;
     TextView question_quiz;
 
     private Question question;
-
     private String answer;
     private int questionLength;
     private int questionNumber = 0;
+
+    private TextView timerTextView;
+    private CountDownTimer mCountDownTimer;
+    private int counter = 10;
+
+    private ArrayList <Button> buttonList = new ArrayList();
+
+    private void resetTimer() {
+        if (mCountDownTimer != null) {
+            mCountDownTimer.cancel();
+            counter = 10;
+
+            mCountDownTimer = new CountDownTimer(10500,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    timerTextView.setText("Timer:" + String.valueOf(counter));
+                    counter--;
+                }
+                public void onFinish() {
+                    if (counter == 0) {
+                        timerTextView.setText("Timer: 0");
+                        GameOver();
+                    }
+                }
+            }.start();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        btn_one = (Button)findViewById(R.id.btn_one);
+        btn_one = findViewById(R.id.btn_one);
         btn_one.setOnClickListener(this);
-        btn_two = (Button)findViewById(R.id.btn_two);
+        btn_two = findViewById(R.id.btn_two);
         btn_two.setOnClickListener(this);
-        btn_three = (Button)findViewById(R.id.btn_three);
+        btn_three = findViewById(R.id.btn_three);
         btn_three.setOnClickListener(this);
-        btn_four = (Button)findViewById(R.id.btn_four);
+        btn_four = findViewById(R.id.btn_four);
         btn_four.setOnClickListener(this);
 
-        question_quiz = (TextView)findViewById(R.id.question_quiz);
+        buttonList.add(btn_one);
+        buttonList.add(btn_two);
+        buttonList.add(btn_three);
+        buttonList.add(btn_four);
+
+        question_quiz = findViewById(R.id.question_quiz);
         questionLength = 4;
 
         Intent intent = getIntent();
@@ -61,66 +98,63 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         NextQuestion(questionNumber++);
+        timerTextView = findViewById(R.id.timerTextView);
+        mCountDownTimer = new CountDownTimer(10500,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("Timer: " + String.valueOf(counter));
+                counter--;
+            }
+            public void onFinish() {
+                if (counter == 0) {
+                    timerTextView.setText("Timer: 0");
+                    GameOver();
+                }
+            }
+        }.start();
+    }
+
+    public void removeTint(final View v) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                v.getBackground().clearColorFilter();
+            }
+        }, 200);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_one:
-                if(btn_one.getText() == answer){
-                    Toast.makeText(this, "You Are Correct", Toast.LENGTH_SHORT).show();
-                    if (questionNumber < questionLength) {
-                        NextQuestion(questionNumber++);
-                    }else if (questionNumber == questionLength){
-                        Won();
-                    }
-                }else{
-                    GameOver();
+    public void onClick(final View v) {
+        Handler handler;
+        if(((Button)v).getText() == answer){
+            v.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+            Toast.makeText(this, "You Are Correct", Toast.LENGTH_SHORT).show();
+            removeTint(v);
+            if (questionNumber < questionLength) {
+                NextQuestion(questionNumber++);
+                resetTimer();
+            } else if (questionNumber == questionLength) {
+                if (mCountDownTimer != null) {
+                    mCountDownTimer.cancel();
                 }
+                Won();
+            }
+        } else {
+            v.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+            removeTint(v);
+            if (mCountDownTimer != null) {
+                mCountDownTimer.cancel();
+            }
 
-                break;
-
-            case R.id.btn_two:
-                if(btn_two.getText() == answer){
-                    Toast.makeText(this, "You Are Correct", Toast.LENGTH_SHORT).show();
-                    if (questionNumber < questionLength) {
-                        NextQuestion(questionNumber++);
-                    }else if (questionNumber == questionLength){
-                        Won();
-                    }
-                }else{
-                    GameOver();
+            for (final Button button : buttonList){
+                if(button.getText().equals(answer)) {
+                    button.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                    removeTint(button);
+                    break;
                 }
-
-                break;
-
-            case R.id.btn_three:
-                if(btn_three.getText() == answer){
-                    Toast.makeText(this, "You Are Correct", Toast.LENGTH_SHORT).show();
-                    if (questionNumber < questionLength) {
-                        NextQuestion(questionNumber++);
-                    }else if (questionNumber == questionLength){
-                        Won();
-                    }
-                }else{
-                    GameOver();
-                }
-
-                break;
-
-            case R.id.btn_four:
-                if(btn_four.getText() == answer){
-                    Toast.makeText(this, "You Are Correct", Toast.LENGTH_SHORT).show();
-                    if (questionNumber < questionLength) {
-                        NextQuestion(questionNumber++);
-                    }else if (questionNumber == questionLength){
-                        Won();
-                    }
-                }else{
-                    GameOver();
-                }
-
-                break;
+            }
+            GameOver();
         }
     }
 
@@ -132,7 +166,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        System.exit(0);
+                        Intent intent = new Intent(QuizActivity.this, ProfileActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra("fragment", 3);
+                        startActivity(intent);
+                        finish();
                     }
                 });
         alertDialogBuilder.show();
@@ -141,12 +179,13 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private void GameOver(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder
-                .setMessage("Sorry! Try harder next time!")
+                .setMessage(getResources().getString(R.string.game_over))
                 .setCancelable(false)
                 .setPositiveButton("New Game", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
@@ -157,14 +196,16 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 });
 
         alertDialogBuilder.show();
-
     }
 
     private void NextQuestion(int num){
         question_quiz.setText(question.getQuestion(num));
         btn_one.setText(question.getchoice1(num));
+
         btn_two.setText(question.getchoice2(num));
+
         btn_three.setText(question.getchoice3(num));
+
         btn_four.setText(question.getchoice4(num));
 
         answer = question.getCorrectAnswer(num);

@@ -24,6 +24,10 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".QuizActivity" />
         <activity android:name=".InfoActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

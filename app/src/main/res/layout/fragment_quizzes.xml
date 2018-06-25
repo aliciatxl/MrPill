@@ -15,10 +15,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:text="Time to quiz yourself!"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_subrayada_bold"
+            android:gravity="center"
             android:padding="15sp"
-            android:layout_weight="1"/>
+            android:text="Categories"
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btn_coughCold"
@@ -26,6 +28,7 @@
             android:layout_height="wrap_content"
             android:tag="1"
             android:text="@string/cough_and_cold"
+            android:background="@color/color2"
             android:layout_weight="1"/>
 
         <Button
@@ -34,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:tag="2"
+            android:background="@color/color1"
             android:text="@string/dry_eyes" />
 
         <Button
@@ -42,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:tag="3"
+            android:background="@color/color4"
             android:text="@string/chronic_pain" />
 
         <Button
@@ -50,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:tag="4"
+            android:background="@color/color2"
             android:text="@string/stomach_conditions" />
 
         <Button
@@ -58,6 +64,7 @@
             android:layout_height="wrap_content"
             android:tag="5"
             android:text="@string/skin_conditions"
+            android:background="@color/color3"
             android:layout_weight="1"/>
     </LinearLayout>
 

@@ -5,4 +5,70 @@
     android:layout_height="match_parent"
     tools:context=".SettingsFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_subrayada_bold"
+            android:layout_gravity="center"
+            android:text="Mr Pill"
+            android:textColor="@color/color2"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About this app"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/navigation"
+            android:fontFamily="@font/abeezee"/>
+
+        <Button
+            android:id="@+id/btn_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share this app with your friends"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/navigation"/>
+
+        <Button
+            android:id="@+id/btn_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share this app" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Log Out" />
+
+
+
+
+    </LinearLayout>
+
 </FrameLayout>
