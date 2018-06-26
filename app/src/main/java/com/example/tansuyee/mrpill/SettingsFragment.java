@@ -31,6 +31,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
         v.findViewById(R.id.btn_logout).setOnClickListener(this);
         v.findViewById(R.id.btn_about).setOnClickListener(this);
+        v.findViewById(R.id.btn_share).setOnClickListener(this);
 
         return v;
     }
@@ -56,13 +57,18 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_logout:
                 mAuth.signOut();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                Intent intentLogOut = new Intent(getActivity(), MainActivity.class);
+                intentLogOut.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intentLogOut.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intentLogOut.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentLogOut);
                 break;
-
+            case R.id.btn_share:
+                Intent intentShare = new Intent(Intent.ACTION_SEND);
+                intentShare.setType("text/plain");
+                intentShare.putExtra(Intent.EXTRA_SUBJECT, "My Health Study App");
+                intentShare.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.share_message));
+                startActivity(Intent.createChooser(intentShare, "Share via"));
         }
     }
 }

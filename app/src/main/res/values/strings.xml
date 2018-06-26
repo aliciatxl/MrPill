@@ -21,10 +21,10 @@
     <string name="no_account">Don\'t have an account?</string>
     <string name="have_account">Already have an account?</string>
 
-    <string name="about_message"> Mr Pill provides an engaging education resource on differentiating and managing common ailments so that individuals can recognise and manage them when the need arises.\n
+    <string name="about_message">Mr Pill provides an engaging education resource on differentiating and managing common ailments so that individuals can recognise and manage them when the need arises.\n
         \nUsers are reminded that the advice given by this app does not replace the opinion of a medical professional and need to seek the advise of a pharmacist or doctor in addition to using the app before making any final decisions. If in any doubt, please consult a pharmacist or doctor in addition to using this app, and before making any medical decisions.
     </string>
+    <string name="share_message">This is a great app! You should try it out!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rewards_message">Rewards</string>
 </resources>
