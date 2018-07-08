@@ -9,4 +9,6 @@
     <color name="color4">#6f91e2</color>
     <color name="color5">#1e439b</color>
     <color name="navigation">#bbe5e9</color>
+    <color name="buttonCorrect">#62B97F</color>
+    <color name="buttonWrong">#f44242</color>
 </resources>

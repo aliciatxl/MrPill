@@ -25,10 +25,13 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private String answer;
     private int questionLength;
     private int questionNumber = 0;
+    Toast toast = null;
 
     private TextView timerTextView;
     private CountDownTimer mCountDownTimer;
     private int counter = 10;
+    private int topic;
+    private String winnerMessage;
 
     private ArrayList <Button> buttonList = new ArrayList();
 
@@ -75,26 +78,31 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         questionLength = 4;
 
         Intent intent = getIntent();
-        int topic = intent.getIntExtra("topicQuiz", 0);
+        topic = intent.getIntExtra("topicQuiz", 0);
         switch (topic) {
             case 1:
                 question = new CoughColdQuestion();
+                winnerMessage = "You have unlocked the 'Dry Eyes' quiz!";
                 break;
             case 2:
                 question = new OticOphthalmicQuestion();
+                winnerMessage = "You have unlocked the 'Chronic Pain' quiz!";
                 break;
             case 3:
                 question = new PainQuestion();
+                winnerMessage = "You have unlocked the 'Stomach Conditions' quiz!";
                 break;
             case 4:
                 question = new GastrointestinalQuestion();
+                winnerMessage = "You have unlocked the 'Skin Conditions' quiz!";
                 break;
             case 5:
                 question = new SkinConditionsQuestion();
+                winnerMessage = "You have completed all categories";
                 break;
             default:
                 question = new CoughColdQuestion();
-
+                winnerMessage = "You have unlocked the 'Chronic Pain' quiz!";
         }
 
         NextQuestion(questionNumber++);
@@ -126,10 +134,13 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(final View v) {
-        Handler handler;
+        if (toast != null) {
+            toast.cancel();
+        }
         if(((Button)v).getText() == answer){
-            v.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
-            Toast.makeText(this, "You Are Correct", Toast.LENGTH_SHORT).show();
+            v.getBackground().setColorFilter(getResources().getColor(R.color.buttonCorrect), PorterDuff.Mode.MULTIPLY);
+            toast = Toast.makeText(this, "You Are Correct", Toast.LENGTH_SHORT);
+            toast.show();
             removeTint(v);
             if (questionNumber < questionLength) {
                 NextQuestion(questionNumber++);
@@ -141,7 +152,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 Won();
             }
         } else {
-            v.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+            v.getBackground().setColorFilter(getResources().getColor(R.color.buttonWrong), PorterDuff.Mode.MULTIPLY);
             removeTint(v);
             if (mCountDownTimer != null) {
                 mCountDownTimer.cancel();
@@ -149,7 +160,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
             for (final Button button : buttonList){
                 if(button.getText().equals(answer)) {
-                    button.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                    button.getBackground().setColorFilter(getResources().getColor(R.color.buttonCorrect), PorterDuff.Mode.MULTIPLY);
                     removeTint(button);
                     break;
                 }
@@ -159,16 +170,20 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void Won() {
+        if (toast != null) {
+            toast.cancel();
+        }
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder
-                .setMessage("Congratulations! You have successfully completed this level! You have unlocked 'Otic and Ophthalmic' quiz! ")
+                .setMessage("Congratulations! You have successfully completed this level! " + winnerMessage)
                 .setCancelable(false)
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(QuizActivity.this, ProfileActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.putExtra("fragment", 3);
+                        intent.putExtra("fragment", 2);
+                        intent.putExtra("cleared", Integer.toString(topic));
                         startActivity(intent);
                         finish();
                     }
@@ -177,6 +192,9 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void GameOver(){
+        if (toast != null) {
+            toast.cancel();
+        }
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder
                 .setMessage(getResources().getString(R.string.game_over))
@@ -184,10 +202,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 .setPositiveButton("New Game", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
+//                        Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivity(intent);
+//                        finish();
+                        recreate();
                     }
                 })
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {

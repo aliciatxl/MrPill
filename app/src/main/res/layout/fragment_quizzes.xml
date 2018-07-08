@@ -29,7 +29,7 @@
             android:tag="1"
             android:text="@string/cough_and_cold"
             android:background="@color/color2"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/btn_oticOphthalmic"
@@ -38,7 +38,8 @@
             android:layout_weight="1"
             android:tag="2"
             android:background="@color/color1"
-            android:text="@string/dry_eyes" />
+            android:text="@string/dry_eyes"
+            android:enabled="false" />
 
         <Button
             android:id="@+id/btn_pain"
@@ -47,7 +48,8 @@
             android:layout_weight="1"
             android:tag="3"
             android:background="@color/color4"
-            android:text="@string/chronic_pain" />
+            android:text="@string/chronic_pain"
+            android:enabled="false" />
 
         <Button
             android:id="@+id/btn_gastrointestinal"
@@ -56,7 +58,8 @@
             android:layout_weight="1"
             android:tag="4"
             android:background="@color/color2"
-            android:text="@string/stomach_conditions" />
+            android:text="@string/stomach_conditions"
+            android:enabled="false" />
 
         <Button
             android:id="@+id/btn_skinConditions"
@@ -65,7 +68,8 @@
             android:tag="5"
             android:text="@string/skin_conditions"
             android:background="@color/color3"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:enabled="false" />
     </LinearLayout>
 
 </FrameLayout>

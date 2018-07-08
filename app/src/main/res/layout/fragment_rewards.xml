@@ -43,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:scaleType="centerInside"
+                    android:visibility="gone"
                     android:src="@drawable/bean"
                     android:tag="Mr Bean" />
 
@@ -52,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:scaleType="fitCenter"
+                    android:visibility="gone"
                     android:src="@drawable/greendot"
                     android:tag="Green Dot" />
             </LinearLayout>
